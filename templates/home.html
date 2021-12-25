@@ -1,0 +1,52 @@
+
+{% extends 'base.html' %}
+    {% load cloudinary %} 
+ {% block content %}
+<h1 class="title">Tag-Me</h1>
+<p>blog tagged with <strong>{{ tag.name }}</strong></p>
+<div class="columns is-mobile mt-5">
+  <div class="column is-half is-offset-one-quarter">
+    {% for blog in blog %}
+    <div class="card mt-3">
+    
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-128x128">
+              <img
+                src={{blog.image.url}}
+                alt="Placeholder image"
+              />
+            </figure>
+          </div>
+          <div class="media-content">
+            {% if blog.author%}
+            <p class="title is-4">{{ blog.author }}</p>
+            <p class="subtitle">{{ blog.title }}</p>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="content">
+          {{ blog.description }} {% if blog.tags %}
+          <div class="tags">
+            {% for tag in blog.tags.all %}
+            <a href="{% url 'blog:blog_tag' tag.pk %}">{{ tag }} &nbsp;</a>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          <br />
+          <time datetime="2016-1-1"
+            ><p>{{ blog.updated|date:"M j, Y" }}</p></time
+          >
+        </div>
+      </div>
+    </div>
+
+    <p></p>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock content %}
