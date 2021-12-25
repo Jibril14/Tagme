@@ -1,7 +1,6 @@
 from pathlib import Path
 import os
 import cloudinary
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -12,9 +11,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '2mf(g_#r6ec$=uqvctsr@8v(hhqmmn)i%y!+k=1h2^zn+eqm$8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['taggerit.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -33,7 +32,7 @@ INSTALLED_APPS = [
     'cloudinary',
 
     # my_app
-    'books'
+    'blog'
 ]
 
 MIDDLEWARE = [
